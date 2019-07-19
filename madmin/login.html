@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/main.css" />
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Materialize Theme</title>
+</head>
+
+<body class="grey lighten-4">
+
+  <nav class="blue darken-2">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo">Madmin</a>
+    </div>
+  </nav>
+
+  <!-- Section: Login -->
+  <section class="section section-login">
+      <div class="container">
+          <div class="row">
+              <div class="col s12 m8 offset-m2 l6 offset-l3">
+                  <div class="card-panel login blue darken-2 white-text center">
+                      <h2>Madmin Login</h2>
+                      <form action="index.html">
+                          <div class="input-field">
+                              <i class="material-icons prefix">email</i>
+                              <input type="email" id="email">
+                              <label for="email" class="white-text">Email</label>
+                            </div>
+                          <div class="input-field">
+                              <i class="material-icons prefix">lock</i>
+                              <input type="password" id="password">
+                              <label for="password" class="white-text">Password</label>
+                            </div>
+                        <input type="submit" value="Login" class="btn btn-large btn-extended grey lighten-4 black-text">
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+<!-- Footer -->
+<footer class="section blue darken-2 white-text center">
+  <p>Madmin Panel Copyright &copy; 2019</p>
+</footer> 
+
+  <!-- Preloader -->
+  <div class="loader preloader-wrapper big active">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div>
+      <div class="gap-patch">
+        <div class="circle"></div>
+      </div>
+      <div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+  <script src="js/chart.js"></script>
+  <script>
+
+    // Hide Section
+    $('.section').hide();
+
+    setTimeout(() => {
+      $(document).ready(function () {
+        
+    //  Show Section
+    $('.section').fadeIn();
+
+    // Hide Preloader
+    $('.loader').fadeOut();
+    
+     //Init Side nav
+     $('.button-collapse').sideNav();
+
+    //  Counter
+    $('.count').each(function() {
+      $(this).prop('Counter', 0).animate({
+        Counter: $(this).text()
+      }, {
+        duration: 4000,
+        easing: 'swing',
+        step: function(now) {
+          $(this).text(Math.ceil(now));
+        }
+      });
+    });
+      
+
+    });
+
+    // Comments - Approve & Deny
+    $('.approve').click(function(e) {
+      Materialize.toast('Comment Approved', 3000, 'rounded');
+      e.preventDefault();
+    });
+    $('.deny').click(function(e) {
+      Materialize.toast('Comment Denied', 3000, 'rounded');
+      e.preventDefault();
+    });
+
+    // Quick Todos
+    $('#todo-form').submit(function(e){
+      const output = `<li class="collection-item">
+                        <div>${$('#todo').val()}
+                          <a href="#!" class="secondary-content delete">
+                            <i class="material-icons">close</i>
+                          </a>
+                        </div>
+                      </li>`;
+
+        $('.todos').append(output);
+
+        Materialize.toast('To do Added', 3000, 'rounded');
+
+      e.preventDefault();
+    });
+
+    // Delete Todos
+    $('.todos').on('click','.delete', function(e){
+      $(this).parent().parent().remove();
+      Materialize.toast('To do Removed', 3000, 'rounded');
+
+      e.preventDefault();
+    });
+
+    // Init Modal
+    $('.modal').modal();
+    // Init Select
+    $('select').material_select();
+  }, 1000);
+
+    //https://cdn.ckeditor.com
+    // CKeditor
+    CKEDITOR.replace( 'body' );
+    
+  </script>
+</body>
+
+</html>

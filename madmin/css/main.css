@@ -1,0 +1,21 @@
+/* absolute to position it in top, left it's up to you how will you position it */
+/* % for malakihang sakop, px or pixel for maliit lang */
+/* top, left, is the child of absolute di sya gagana pag walang absolute */
+.loader {
+    position: absolute;
+    top: 40%;
+    left: 47%;
+}
+
+.login {
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.btn-extended {
+    display: block;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+
